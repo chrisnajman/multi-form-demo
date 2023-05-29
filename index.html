@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-form Demo</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" type="module"></script>
+</head>
+
+<body>
+    <a href="#main-content" class="element-invisible element-focusable skip-link">Skip to main content</a>
+    <div class="page-layout">
+        <header class="page-header">
+            <h1>Multi-form Demo</h1>
+            <p>(No data is saved)</p>
+        </header>
+        <main class="main">
+            <div class="content-wrapper">
+                <aside class="progress" aria-hidden="true">
+                    <div>
+                        <div class="circle circle-selected" id="circle-1"><span>1</span></div>
+                        <div class="progress-info">
+                            <span>Step 1</span>
+                            <p>Your Info</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="circle" id="circle-2"><span>2</span></div>
+                        <div class="progress-info">
+                            <span>Step 2</span>
+                            <p>Select Plan</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="circle" id="circle-3"><span>3</span></div>
+                        <div class="progress-info">
+                            <span>Step 3</span>
+                            <p>Add-Ons</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="circle" id="circle-4"><span>4</span></div>
+                        <div class="progress-info">
+                            <span>Step 4</span>
+                            <p>Summary</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="circle" id="circle-5"><span>5</span></div>
+                        <div class="progress-info">
+                            <span>Step 5</span>
+                            <p>Completed</p>
+                        </div>
+                    </div>
+                </aside>
+                <div class="steps" id="main-content" tabindex="0">
+                    <!-- STEP 1 -->
+                    <form id="form-details" class="form step step-1" data-step-1>
+                        <header class="step-header">
+                            <h2><span class="step-header-sr">Step 1: </span>Personal info</h2>
+                        </header>
+                        <div class="step-main">
+                            <div class=" form-element">
+                                <label for="name">Name
+                                    <span class="sr-only">e.g. John Doe</span>
+                                </label>
+                                <input type="text" id="name" data-name required placeholder="e.g. Jean Doe"
+                                    value="Jean Doe">
+                            </div>
+                            <div class=" form-element">
+                                <label for="email">Email Address
+                                    <span class="sr-only">e.g. johndoe@deauville.com</span>
+                                </label>
+                                <input type="email" id="email" data-email required placeholder="jeandoe@deauville.com"
+                                    value="jeandoe@deauville.com">
+                            </div>
+                            <div class="form-element">
+                                <label for="phone">Phone Number
+                                    <span class="sr-only">e.g. +1 234 567 890</span>
+                                </label>
+                                <input type="tel" id="phone" data-phone required placeholder="e.g. +44 4444 111 555"
+                                    value="+44 4444 111 555">
+                            </div>
+                        </div>
+                        <footer class="step-footer button-group">
+                            <button id="next-2" class="button-btn">Next step
+                                <span class="sr-only">: Select your plan</span>
+                            </button>
+                        </footer>
+                    </form>
+                    <!-- STEP 2 -->
+                    <form class="step step-2 hidden" id="select-plan" data-step-2>
+                        <header class="step-header">
+                            <h2><span class="step-header-sr">Step 2: </span>Select your plan</h2>
+                            <p>You have the option of monthly or yearly billing.</p>
+                        </header>
+                        <div class="step-main">
+                            <fieldset class="form-items">
+                                <legend class="sr-only">Check a radio button to select your plan</legend>
+                                <div class="form-item form-item-radio selected" data-radio>
+                                    <input type="radio" id="basic" name="plan" data-select-plan checked>
+                                    <label for="basic" data-plan-basic>
+                                        <span data-plan-name class="form-item-heading">Basic</span>
+                                        <span>&pound;<span data-basic-price data-plan-price>9</span>/<span
+                                                data-period>mo</span></span>
+                                        <span data-months-free class="form-item-free-months months-hidden"
+                                            aria-hidden="true">2 months free</span>
+                                    </label>
+                                </div>
+                                <div class="form-item form-item-radio" data-radio>
+                                    <input type="radio" id="advanced" name="plan" data-select-plan>
+                                    <label for="advanced" data-plan-advanced>
+                                        <span data-plan-name class="form-item-heading">Advanced</span>
+                                        <span>&pound;<span data-advanced-price data-plan-price>12</span>/<span
+                                                data-period>mo</span></span>
+                                        <span data-months-free class="form-item-free-months  months-hidden"
+                                            aria-hidden="true">2 months free</span>
+                                    </label>
+                                </div>
+                                <div class="form-item form-item-radio" data-radio>
+                                    <input type="radio" id="pro" name="plan" data-select-plan>
+                                    <label for="pro" data-plan-pro>
+                                        <span data-plan-name class="form-item-heading">Pro</span>
+                                        <span>&pound;<span data-pro-price data-plan-price>15</span>/<span
+                                                data-period>mo</span></span>
+                                        <span data-months-free class="form-item-free-months months-hidden"
+                                            aria-hidden="true">2 months free</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                            <label class="toggle" for="switcher">
+                                <span id="switch-monthly" class="period-selected">Monthly</span>
+                                <input type="checkbox" class="toggle-input sr-only" id="switcher" checked>
+                                <span class="toggle-track">
+                                    <span class="toggle-indicator"></span>
+                                </span>
+                                <span id="switch-yearly">Yearly</span>
+                            </label>
+                        </div>
+                        <footer class="step-footer button-group">
+                            <button type="button" id="prev-1" class="button-btn">Go back
+                                <span class="sr-only">to Step 1: Personal info</span>
+                            </button>
+                            <button id="next-3" class="button-btn">Next step
+                                <span class="sr-only">: Pick add-ons</span>
+                            </button>
+                        </footer>
+                    </form>
+                    <!-- STEP 3 -->
+                    <form class="step step-3 hidden" id="pick-add-ons" data-step-3>
+                        <header class="step-header">
+                            <h2><span class="step-header-sr">Step 3: </span>Pick add-ons</h2>
+                            <p>Add-ons help enhance your gaming experience.</p>
+                        </header>
+                        <div class="step-main">
+                            <fieldset class="form-items">
+                                <legend class="sr-only">Check checkbox(es) to select your add-ons</legend>
+                                <div class="form-item form-item-addon" data-select-addon data-select-addon-online>
+                                    <input type="checkbox" id="support" name="support" data-checkbox>
+                                    <label for="support" data-addon-support>
+                                        <span data-addon-name class="form-item-heading">Support</span>
+                                        <span>24/7 technical support</span>
+                                        <span>&pound;<span data-support-price data-addon-price></span>/<span
+                                                data-plan-period-shared></span></span>
+                                    </label>
+                                </div>
+                                <div class="form-item form-item-addon" data-select-addon data-select-addon-storage>
+                                    <input type="checkbox" id="larger-storage" name="larger-storage" data-checkbox>
+                                    <label for="larger-storage" data-addon-larger-storage>
+                                        <span data-addon-name class="form-item-heading">Larger storage</span>
+                                        <span>Extra 1TB of cloud save</span>
+                                        <span>&pound;<span data-larger-storage-price data-addon-price></span>/<span
+                                                data-plan-period-shared></span></span>
+                                    </label>
+                                </div>
+                                <div class="form-item form-item-addon" data-select-addon data-select-addon-custom>
+                                    <input type="checkbox" id="customisable-profile" name="customisable-profile"
+                                        data-checkbox>
+                                    <label for="customisable-profile" data-addon-customisable-profile>
+                                        <span data-addon-name class="form-item-heading">Customisable profile</span>
+                                        <span>Custom theme on your profile</span>
+                                        <span>&pound;<span data-custom-profile-price data-addon-price></span>/<span
+                                                data-plan-period-shared></span></span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <footer class="step-footer button-group">
+                            <button type="button" id="prev-2" class="button-btn">Go back
+                                <span class="sr-only">to Step 2: Select your plan</span>
+                            </button>
+                            <button id="next-4" class="button-btn">Next step
+                                <span class="sr-only">: Finishing up</span>
+                            </button>
+                        </footer>
+                    </form>
+                    <!-- STEP 4 -->
+                    <div class="step step-4 hidden" id="summary" data-step-4>
+                        <header class="step-header">
+                            <h2><span class="step-header-sr">Step 4: </span>Finishing up</h2>
+                            <p>Check your order before confirming.</p>
+                        </header>
+                        <div class="step-main">
+                            <table class="summary">
+                                <caption class="sr-only">Your order details</caption>
+                                <tbody>
+                                    <tr>
+                                        <th scope="col" colspan="2">
+                                            <div>Personal Details</div>
+                                            <div>
+                                                <button id="back-to-step-1" class="button-link">Change<span
+                                                        class="sr-only">
+                                                        personal details</span>
+                                                </button>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Name</th>
+                                        <td data-user-name></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email</th>
+                                        <td data-user-email></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tel.</th>
+                                        <td data-user-phone></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" colspan="2">
+                                            <div>Plan Details</div>
+                                            <div>
+                                                <button id="back-to-step-2" class="button-link">Change<span
+                                                        class="sr-only">
+                                                        plan</span>
+                                                </button>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Plan Name</th>
+                                        <td><span data-plan-name-summary></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Plan Period</th>
+                                        <td data-plan-periodfull-summary></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Plan Price</th>
+                                        <td>&pound;<span data-plan-price-summary data-price-summary></span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="col" colspan="2">
+                                            <div>Add-on Details</div>
+                                            <div>
+                                                <button id="back-to-step-3" class="button-link">Change<span
+                                                        class="sr-only">
+                                                        add-ons</span>
+                                                </button>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Support</th>
+                                        <td>&pound;<span data-addon-online-price-summary data-price-summary>0</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Larger Storage</th>
+                                        <td>&pound;<span data-addon-storage-price-summary data-price-summary>0</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Custom Profile</th>
+                                        <td>&pound;<span data-addon-custom-price-summary data-price-summary>0</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" colspan="2" class="total">Total</th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="total last-cell">&pound;<span
+                                                data-summary-total-price></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer class="step-footer button-group">
+                            <button type="button" id="prev-3" class="button-btn">Go back
+                                <span class="sr-only">to Step 3: Pick add-ons</span>
+                            </button>
+                            <button id="finish" class="button-btn">Confirm</button>
+                        </footer>
+                    </div>
+                    <!-- STEP 5 -->
+                    <div class="step step-5 hidden" id="completed" data-step-5>
+                        <header class="step-header">
+                            <h2><span class="step-header-sr">Step 5: </span>Thank you, <span data-user-name></span></h2>
+                        </header>
+                        <div class="step-main">
+                            <p>Generic thank you message ipsum dolor sit amet consectetur adipisicing elit. Sit
+                                quaerat consequatur doloribus consequuntur.</p>
+                        </div>
+                        <footer class="step-footer button-group">
+                            <button id="btn-clear" class="button-btn">Clear form and start again</button>
+                        </footer>
+
+                    </div>
+
+                </div>
+            </div>
+        </main>
+        <footer class="page-footer">
+            <p>
+                <a href="https://github.com/chrisnajman/multi-form-demo" target="_blank" rel="noopener noreferrer">
+                    GitHub Repository
+                </a>
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>

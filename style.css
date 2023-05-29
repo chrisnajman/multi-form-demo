@@ -1,0 +1,554 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+:root {
+    --lightest: rgb(255, 255, 255);
+    --lighter: rgb(240 241 242);
+    --light: rgb(245, 245, 250);
+    --mid: rgb(218, 219, 241);
+    --dark: rgb(9, 9, 70);
+    --highlight: rgb(0, 117, 255);
+    --font-sans: system-ui, sans-serif;
+    --font-normal: 400;
+    --font-bold: 600;
+    --horz-center: 0 auto;
+    --flex: flex;
+    --grid: grid;
+}
+
+body {
+    background-color: var(--lightest);
+    color: var(--dark);
+    font-family: var(--font-sans);
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1rem;
+    font-weight: var(--font-normal);
+}
+
+@media screen and (min-width: 835px) {
+    body {
+        background-color: var(--lighter);
+    }
+}
+
+h1,
+h2 {
+    font-weight: var(--font-normal);
+}
+
+a {
+    color: var(--highlight);
+}
+
+button {
+    all: unset;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    transform: scale(1.75);
+    position: relative;
+    top: 1rem;
+    left: 1rem;
+}
+
+a:focus,
+button:focus,
+input:focus,
+#main-content:focus,
+[role="region"][aria-labelledby][tabindex]:focus {
+    outline: none;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--highlight);
+}
+
+.button-group button:focus-visible {
+    outline: 3px solid var(--dark);
+}
+
+#main-content:focus-visible {
+    border: 3px solid var(--highlight);
+}
+
+/** Page layout (grid) **/
+.page-layout {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: var(--grid);
+    grid-template-rows: auto 1fr auto;
+}
+
+/** Layout **/
+.page-header,
+.page-footer {
+    background-color: var(--mid);
+    color: var(--dark);
+    text-align: center;
+}
+
+.page-header {
+    padding: 1.5rem 1rem 2rem;
+}
+
+.page-header p {
+    font-weight: var(--font-bold);
+}
+
+.main {
+    padding: 0 1rem 1rem;
+}
+
+@media screen and (min-width: 600px) {
+    .main {
+        padding: 1rem;
+    }
+}
+
+@media screen and (min-width: 835px) {
+    .main {
+        padding: 5rem 1rem;
+    }
+}
+
+.page-footer {
+    padding: 2rem 1rem;
+}
+
+.page-footer a {
+    color: var(--dark);
+}
+
+/** Progress bar **/
+.circles {
+    padding-bottom: 1rem;
+}
+
+.circle {
+    width: 3.125rem; /* 50px; */
+    height: 3.125rem; /* 50px; */
+    border-radius: 50%;
+    border: 2px solid var(--lightest);
+    background-color: transparent;
+    display: var(--flex);
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-bold);
+    background: var(--dark);
+    color: var(--lightest);
+    flex-shrink: 0;
+    font-size: 1.5rem;
+}
+
+.circle span {
+    flex-shrink: 0;
+}
+
+.circle.circle-selected {
+    background-color: var(--highlight);
+    color: var(--lightest);
+}
+
+.content-wrapper {
+    display: var(--flex);
+    flex-direction: column;
+    max-width: 58.75rem; /* 940px;*/
+    margin: var(--horz-center);
+    border-radius: 1.5625rem; /* 25px; */
+}
+
+.progress {
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    .progress {
+        display: var(--flex);
+        align-items: center;
+        gap: 1rem;
+        color: var(--dark);
+        background-color: var(--lightest);
+        padding: 2rem 2rem 0 2rem;
+        border-radius: 25px 25px 0 0;
+        font-weight: var(--font-bold);
+    }
+}
+
+@media screen and (min-width: 835px) {
+    .progress {
+        background-color: var(--mid);
+        padding-bottom: 2rem;
+    }
+}
+
+.progress-info {
+    display: none;
+}
+
+@media screen and (min-width: 835px) {
+    .progress-info {
+        display: block;
+    }
+}
+
+.progress > div {
+    display: var(--flex);
+    width: 100%;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.progress p {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+/** Steps all **/
+.steps {
+    display: var(--flex);
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: var(--lightest);
+    color: var(--dark);
+    gap: 1rem;
+    border-radius: 0 0 25px 25px;
+}
+
+.step {
+    display: var(--grid);
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+}
+
+.step p {
+    max-width: 60ch;
+    margin: var(--horz-center);
+}
+
+.step-header {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.step-header-sr {
+    position: static;
+}
+
+@media screen and (min-width: 835px) {
+    .step-header-sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(0);
+        border: 0;
+    }
+}
+.step-main {
+    display: var(--flex);
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+}
+@media screen and (min-width: 835px) {
+    .step-main {
+        padding: 1rem 2rem 3rem 2rem;
+        width: auto;
+    }
+}
+
+.step-footer {
+    padding: 0 1rem;
+}
+@media screen and (min-width: 600px) {
+    .step-footer {
+        padding: 2rem 2rem;
+    }
+}
+
+/** Buttons **/
+.button-link {
+    color: var(--highlight);
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+
+.step-1 button,
+.step-5 button {
+    margin-left: auto;
+}
+
+.button-group {
+    display: var(--flex);
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 835px) {
+    .button-group {
+        background-color: var(--mid);
+        border-radius: 0 0 25px 25px;
+    }
+}
+
+.button-group button {
+    flex-shrink: 0;
+    padding: 0.5rem 1rem;
+    border-radius: 0.625rem; /* 10px; */
+    background-color: var(--highlight);
+    color: var(--lightest);
+    font-weight: var(--font-bold);
+}
+
+/** Shared **/
+.form-items {
+    display: var(--grid);
+    gap: 1rem;
+    padding: 0;
+    border: 0;
+}
+
+@media screen and (min-width: 835px) {
+    .form-items {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.form-item {
+    border: 1px solid var(--mid);
+    background-color: var(--light);
+    border-radius: 0.625rem; /* 10px; */
+    display: var(--flex);
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+.form-item.selected {
+    box-shadow: 3px 3px 3px 0 rgba(9, 9, 70, 0.54);
+}
+
+.form-item label {
+    display: var(--flex);
+    flex-direction: column;
+    padding: 0.75rem 1rem 1rem 1rem;
+    width: 100%;
+}
+
+.form-item-heading,
+.form-item-free-months {
+    font-weight: var(--font-bold);
+}
+
+/** Step 1: Your Info **/
+.step-1 .step-main {
+    gap: 1.5rem;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 835px) {
+    .step-1 .step-main {
+        margin: 0 10rem;
+    }
+}
+
+.form-element {
+    display: var(--grid);
+    gap: 0.5rem;
+}
+
+.form-element label {
+    font-weight: var(--font-bold);
+}
+
+.form-element input {
+    padding: 1rem;
+    font-size: inherit;
+    font-family: inherit;
+    background-color: var(--light);
+    border: 2px solid var(--mid);
+    border-radius: 0.625rem; /* 10px; */
+}
+
+/** Step 2: Select plan **/
+.period-selected {
+    font-weight: var(--font-bold);
+}
+
+.months-hidden {
+    visibility: hidden;
+}
+
+.toggle {
+    display: var(--flex);
+    align-items: center;
+    justify-content: center;
+    margin: var(--horz-center);
+    padding: 2rem 1rem 1rem;
+    font-weight: var(--font-normal);
+    cursor: pointer;
+}
+
+.toggle-input {
+    opacity: 0;
+}
+
+.toggle-input:active + .toggle-track,
+.toggle-input:focus + .toggle-track {
+    border: 0;
+    outline: solid 3px var(--highlight);
+}
+
+.toggle-track {
+    display: var(--flex);
+    position: relative;
+    width: 3.75rem; /* 60px; */
+    height: 1.875rem; /* 30px; */
+    margin-right: 0.75rem; /* 12px; */
+    margin-left: 0.75rem; /* 12px; */
+    cursor: pointer;
+    border-radius: 0.5rem; /* 8px */
+    background-color: var(--dark);
+    font-weight: var(--font-normal);
+}
+
+.toggle-indicator {
+    display: var(--flex);
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+    width: 1.5rem; /* 24px; */
+    height: 1.5rem; /* 24px; */
+    background-color: var(--lightest);
+    background-image: url("./img/checkbox.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 0.375rem; /*6px */
+    outline: solid 3px transparent;
+    transition: 0.25s;
+}
+
+.toggle-input + .toggle-track .toggle-indicator {
+    transform: translateX(1.875rem); /* (30px) */
+}
+
+.toggle-input:checked + .toggle-track .toggle-indicator {
+    background-color: var(--lightest);
+    transform: translateX(0);
+}
+
+/** Step 3: Add-ons  N/A **/
+
+/** Step 4: Summary (table) **/
+.summary {
+    width: 100%;
+    margin: var(--horz-center);
+    border: 1px solid var(--mid);
+    border-spacing: 0;
+    background: var(--lightest);
+}
+
+.summary th[scope="col"] {
+    background-color: var(--mid);
+    color: var(--dark);
+    position: relative;
+}
+
+@media screen and (min-width: 835px) {
+    .summary th[scope="col"] div:last-child {
+        float: right;
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+    }
+}
+
+.summary th[scope="row"] {
+    text-align: right;
+    border-right: 1px solid var(--mid);
+}
+
+.summary th,
+.summary td {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--mid);
+    vertical-align: top;
+}
+.summary td {
+    word-break: break-word;
+}
+
+@media screen and (min-width: 835px) {
+    .summary td {
+        width: 50%;
+    }
+}
+
+.summary .last-cell {
+    border-bottom: 0;
+    text-align: center;
+    font-weight: var(--font-bold);
+}
+
+.summary tr:nth-child(odd):not(th[scope="col"]) {
+    background-color: var(--light);
+}
+
+/** Step 5: Complete N/A **/
+
+/** Helpers **/
+/* screenreader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(0);
+    border: 0;
+}
+
+/* Skip link */
+.skip-link {
+    background: var(--lightest);
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 0.625rem 0; /* 10px */
+}
+.element-invisible {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+}
+.element-invisible.element-focusable:active,
+.element-invisible.element-focusable:focus {
+    clip: auto;
+    height: auto;
+    overflow: visible;
+}
+
+.bold {
+    font-weight: var(--font-bold);
+}
+
+/* must come last */
+.hidden {
+    display: none;
+}
