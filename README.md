@@ -23,9 +23,9 @@ The page is a response to the [Frontend Mentor Multistep Form](https://www.front
 
 ### Keyboard navigation
 
-I followed the project specification when scripting, but I jettisoned much of the design. This was because I found that if I followed it, successful keyboard navigation would be partial at best. So, instead of hiding default form characteristics, e.g. checkboxes and radio buttons, I've incorporated them into my design, which, not being a designer, I've kept as basic as possible.
+I followed the project specification when scripting, but jettisoned much of the design. This was because I found that if I followed the design, successful keyboard navigation would only be partial, at best. So instead of hiding default form elements such as checkboxes and radio buttons, I've made a feature of them.
 
-I also modified the excellent [Accessible Custom Toggle Switch by Álvaro (Codepen)](https://codepen.io/alvarotrigo/pen/NWweaqW) so that the keyboard user will know they are interacting with a checkbox.
+I also modified the excellent [Accessible Custom Toggle Switch by Álvaro (Codepen)](https://codepen.io/alvarotrigo/pen/NWweaqW) so the keyboard user will know they are interacting with a checkbox (and not have to make a guess).
 
 #### To navigate between radio items:
 
