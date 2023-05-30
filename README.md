@@ -23,17 +23,17 @@ The page is a response to the [Frontend Mentor Multistep Form](https://www.front
 
 ### Keyboard navigation
 
-While the scripting requirements have been followed as per the Frontend Mentor project, the design has been more or less abandoned. This was because, amongst other reasons, I found that if I followed the design, keyboard navigation would be unsatisfactory. So, instead of hiding default form characteristics, e.g. checkboxes and radio buttons, I have instead tried to incorporate them into the design.
+I followed the project specification when scripting, but I jettisoned much of the design. This was because I found that if I followed it, successful keyboard navigation would be partial at best. So, instead of hiding default form characteristics, e.g. checkboxes and radio buttons, I've incorporated them into my design, which, not being a designer, I've kept as basic as possible.
 
-I also modified the [Accessible Custom Toggle Switch by Álvaro (Codepen)](https://codepen.io/alvarotrigo/pen/NWweaqW) so that the keyboard user would know they were interacting with a checkbox.
+I also modified the excellent [Accessible Custom Toggle Switch by Álvaro (Codepen)](https://codepen.io/alvarotrigo/pen/NWweaqW) so that the keyboard user will know they are interacting with a checkbox.
 
 #### To navigate between radio items:
 
-- Use the keyboard arrow keys to select an item, then click `Tab` to move on.
+- Use the keyboard arrow keys to select an item, then click `Tab` to continue.
 
 #### To navigate between checkboxes:
 
-- Use the `Tab` key to get to an item, then click the space bar to select it. Click `Tab` to move on.
+- Use the `Tab` key to get to an item, then click the space bar to select it. Click `Tab` to continue.
 
 #### To navigate buttons:
 
