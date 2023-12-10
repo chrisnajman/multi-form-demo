@@ -57,6 +57,7 @@ All steps take place on the same HTML page (index.html).
 
 - ES6 modules
 - ES6 (no transpilation to ES5)
+- `document.startViewTransition` applied to 'Previous' and 'Next' buttons. Fallback supplied for unsupported browsers, e.g. Firefox (10/12/203). Note that e.g. Firefox logs `document.startViewTransition` as a type error to the console but functionality not affected.
 
 ## Testing
 
